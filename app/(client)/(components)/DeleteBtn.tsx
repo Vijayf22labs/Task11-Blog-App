@@ -11,7 +11,7 @@ const DeleteBtn = ({ id }: { id: number }) => {
     const router = useRouter()
     const [isDeleting, setIsDeleting] = useState(false)
 
-    async function handleDelete(event: any){
+    async function handleDelete(event: React.MouseEvent<HTMLButtonElement>){
         event.preventDefault()
         setIsDeleting(true)
         try{

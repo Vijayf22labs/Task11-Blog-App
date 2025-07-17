@@ -1,4 +1,5 @@
 import DeleteBtn from "@/app/(client)/(components)/DeleteBtn";
+import { PostProps } from "@/app/(client)/(types)/types";
 import { Axios } from "@/app/(client)/(utils)/Axios";
 import { ArrowLeft, Calendar, Clock, Edit } from "lucide-react";
 import Link from "next/link";
@@ -8,18 +9,9 @@ import toast from "react-hot-toast";
 export const dynamic = "force-static"
 export const revalidate = 60
 
-type Post = {
-    id: number;
-    title: string;
-    description: string;
-    category: string;
-    createdAt: string;
-    updatedAt: string | null;
-};
-
 export default async function Post({ params }: { params: { id: string } }) {
     let id = parseInt(params.id)
-    let post: Post | null = null
+    let post: PostProps | null = null
 
     try{
         const response = await Axios.get(`/posts/get`)
