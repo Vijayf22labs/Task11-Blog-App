@@ -1,31 +1,19 @@
 import Link from 'next/link';
 import React from 'react'
+import { eachPostProps } from '../(types)/types';
+import { formatDate } from '../(utils)/helper';
 
-interface postProps{
-  post: {
-    id: number;
-    title: string;
-    description: string;
-    category: string;
-    createdAt: string;
-  }
-}
-
-const PostCard = ({ post }: postProps) => {
+const PostCard = ({ post }: eachPostProps) => {
     return (
       <div className="border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 bg-white hover:bg-gray-50/50">
         <div className="p-5">
           <div className="flex items-start justify-between gap-2">
-            <div>
+            <div className='mb-2'>
               <span className="inline-block px-2.5 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800 mb-2">#{post.category}</span>
-              <h2 className="text-xl font-bold text-gray-900 line-clamp-2 mb-2">{post.title}</h2>
+              <h2 className="text-xl font-bold text-gray-900 line-clamp-2">{post.title}</h2>
             </div>
             <span className="text-xs text-gray-500 whitespace-nowrap mt-1">
-              {new Date(post.createdAt).toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              })}
+              {formatDate(post.createdAt)}
             </span>
           </div>
           
